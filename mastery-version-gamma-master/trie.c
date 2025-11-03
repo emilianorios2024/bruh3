@@ -89,7 +89,11 @@ bool insert(trie_node_t* root, char* word) {
 void free_trie(trie_node_t* root) {
     free_trie_node(&root);
     for (int i = 0; i < ASCII_CHARS - FIRST_VALID_CHAR; i++) {
+        if(!root){
+            return;
+        }
         free_trie(root->children[i]);
+        
     }
 }
 
